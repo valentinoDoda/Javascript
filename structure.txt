@@ -1,0 +1,16 @@
+02 Fundamentals Part 1  
+03 Fundamentals Part 2
+05 Develop Skills
+07 Dom Manipulation
+08 How Js Works
+09 Modern Operators (ES6 +)
+10 Functions
+11 Arrays
+12 Numbers , Dates , Timers
+13 Advanced Dom
+14 Object-Oriented JS
+15 Mapty Project
+16 Asychronous JS
+17 Modern JS Application 
+19 Forkify Project 
+20 Deployment and Git
