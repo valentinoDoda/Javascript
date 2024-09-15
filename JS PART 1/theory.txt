@@ -1,0 +1,35 @@
+JavaScript Primitive Types
+
+1. Number: Αριθμητικές τιμές (ακέραιες και δεκαδικές).
+   Παράδειγμα:
+   let age = 25;
+   let pi = 3.14;
+
+2. String: Ακολουθίες χαρακτήρων (κείμενο).
+   Παράδειγμα:
+   let name = "Maria";
+   let greeting = 'Hello, world!';
+
+3. Boolean: Λογικές τιμές (true/false).
+   Παράδειγμα:
+   let isAdult = true;
+   let hasLicense = false;
+
+4. Undefined: Δηλωμένη μεταβλητή χωρίς αρχικοποίηση.
+   Παράδειγμα:
+   let notAssigned;
+   console.log(notAssigned); // undefined
+
+5. Null: Μηδενική ή κενή τιμή.
+   Παράδειγμα:
+   let emptyValue = null;
+
+6. Symbol (ES6): Μοναδική και αμετάβλητη τιμή, συχνά για properties αντικειμένων.
+   Παράδειγμα:
+   let uniqueKey = Symbol('key');
+
+7. BigInt (ES2020): Για αναπαράσταση πολύ μεγάλων αριθμών που δεν υποστηρίζονται από τον τύπο Number.
+   Παράδειγμα:
+   let bigNumber = BigInt(9007199254740991);
+
+Primitive τύποι στη JavaScript είναι απλοί, αποθηκεύονται by value και δεν έχουν ιδιότητες ή μεθόδους όπως τα αντικείμενα.
