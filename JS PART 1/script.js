@@ -13,3 +13,15 @@ population = "3.1 milion";
 console.log(country, continent, population);
 
 
+let massMark, massJohn, heightMark, heightJohn, bmiMark, bmiJohn;
+
+[massJohn, massMark] = [92,78];
+[heightJohn, heightMark] = [1.69, 1.95];
+
+bmiMark = massMark / (heightMark * heightMark);
+bmiJohn = massJohn / (heightJohn * heightJohn);
+
+console.log(bmiMark, bmiJohn);
+
+let markHigherBMI = bmiMark > bmiJohn;
+console.log(markHigherBMI);
