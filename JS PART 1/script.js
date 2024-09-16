@@ -49,3 +49,12 @@ else{
         console.log("Koalas win the trophy");
     }
 }
+
+
+const bill = 275;
+
+/* Write your code below. Good luck! 🙂 */
+
+const tip = bill > 49 && bill < 301 ? bill * 0.15 : bill * 0.2;
+
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill+tip}`);
