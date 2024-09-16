@@ -1,4 +1,4 @@
-02 Fundamentals Part 1  
+02 Fundamentals Part 1 (Completed)
 03 Fundamentals Part 2
 05 Develop Skills
 07 Dom Manipulation
