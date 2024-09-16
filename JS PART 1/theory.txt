@@ -306,3 +306,11 @@ switch (color) {
 Το default εκτελείται αν καμία περίπτωση δεν ταιριάζει.
 
 
+ conditional (ternary) operator στην JavaScript είναι ένας συντομότερος τρόπος για να γράψουμε ένα if-else statement.
+ Η σύνταξή του είναι: condition ? expressionIfTrue : expressionIfFalse;
+
+Αν η condition είναι αληθής (true), τότε εκτελείται η expressionIfTrue, αλλιώς εκτελείται η expressionIfFalse.
+
+let age = 20;
+let canDrink = age >= 18 ? "Μπορεί να πιει αλκοόλ" : "Δεν μπορεί να πιει αλκοόλ";
+console.log(canDrink);  // "Μπορεί να πιει αλκοόλ"
