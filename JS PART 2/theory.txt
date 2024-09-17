@@ -23,3 +23,32 @@ function add(a, b) {
 let result = add(3, 4); // Το result θα είναι 7
 console.log(result); // Εκτυπώνει: 7
 Εδώ η συνάρτηση add παίρνει δύο αριθμούς, τους προσθέτει και επιστρέφει το αποτέλεσμα με τη λέξη-κλειδί return
+
+Function Expression (Έκφραση Συνάρτησης)
+Η function expression είναι όταν μια συνάρτηση ορίζεται μέσα σε μια έκφραση, συνήθως την αναθέτουμε σε μια μεταβλητή:
+
+const sayHello = function() {
+  console.log("Γεια σου!");
+};
+Χαρακτηριστικά:
+Η συνάρτηση μπορεί να είναι ανώνυμη (όπως εδώ), αλλά μπορείς να δώσεις και όνομα αν το επιθυμείς.
+Οι εκφράσεις συνάρτησης δεν ανυψώνονται (no hoisting), επομένως η συνάρτηση δεν μπορεί να κληθεί πριν οριστεί.
+Παράδειγμα:
+
+sayHello(); // Θα πετάξει σφάλμα: sayHello is not defined
+
+const sayHello = function() {
+  console.log("Γεια σου!");
+};
+Σε αυτό το παράδειγμα, θα πάρεις σφάλμα αν προσπαθήσεις να καλέσεις τη συνάρτηση πριν την ορίσεις, 
+γιατί οι function expressions δεν ανυψώνονται.
+
+Arrow Function ειναι συντομογραφια της Function Expression:
+
+const sayHello = function() {
+  console.log("Γεια σου!");
+};
+
+Σε Arrow:
+
+const sayHello = () => console.log("Γεια σου!");
