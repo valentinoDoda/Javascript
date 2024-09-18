@@ -33,3 +33,22 @@ const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
 console.log(`These are the bills ${bills} these are the tips ${tips} and the totals ${totals}`);
+
+
+
+
+
+// Challenge while watching the course
+
+/*
+'Jonas has 3 friends , and his favourite is called Michael'
+*/
+
+const valentin = {
+    firstName : 'Valentin',
+    lastName : 'Doda',
+    age : 21 ,
+    friends : ['emil', 'katyr', 'nikos'],
+    job : 'Programmer'
+};
+console.log(`${valentin.firstName} has ${valentin.friends.length} friends , and his favourite is called ${valentin.friends[0]}`);
