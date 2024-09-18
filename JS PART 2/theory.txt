@@ -52,3 +52,28 @@ const sayHello = function() {
 Σε Arrow:
 
 const sayHello = () => console.log("Γεια σου!");
+
+
+
+const friends = ['a','b', 'c'];
+
+const lengthFriend = friends.push("Valentin");
+console.log(lengthFriend); // 4
+console.log(friends); // [ "a", "b", "c", "Valentin" ]
+
+friends.unshift("J");
+console.log(friends, friends.unshift("J")); // [ "J", "a", "b", "c" ] 6
+
+const popped = friends.pop();
+console.log(popped); // Valentin
+console.log(friends); // [ "J", "J", "a", "b", "c" ]
+
+const shifted = friends.shift("What a sigma");
+console.log(shifted); // J
+console.log(friends) // [ "J", "a", "b", "c" ]
+
+console.log(friends.indexOf("the element we want to searched if exist")) // -1 if dont exist the index of element in array if exist
+
+console.log(friends.includes("")) // return true if exist and false if dont
+
+
