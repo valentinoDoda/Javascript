@@ -77,3 +77,35 @@ console.log(friends.indexOf("the element we want to searched if exist")) // -1 i
 console.log(friends.includes("")) // return true if exist and false if dont
 
 
+
+Στην JavaScript, ένα object (αντικείμενο) είναι μια συλλογή από ιδιότητες, όπου κάθε ιδιότητα αποτελείται από ένα κλειδί (key)
+και μια τιμή (value). Οι ιδιότητες μπορούν να είναι είτε μεταβλητές (values) είτε συναρτήσεις (methods).
+
+Χρήση του literal notation (συνιστώμενος τρόπος):
+
+let car = {
+  make: 'Toyota',
+  model: 'Corolla',
+  year: 2020,
+  start: function() {
+    console.log('Car started');
+  }
+};
+Πρόσβαση σε Ιδιότητες
+Μπορείς να προσπελάσεις τις ιδιότητες ενός αντικειμένου με δύο τρόπους:
+
+Dot notation (Σημειογραφία κουκκίδας):
+
+console.log(car.make);  // 'Toyota'
+Bracket notation (Σημειογραφία αγκύλης):
+
+console.log(car['model']);  // 'Corolla'
+Πρόσθεση/Τροποποίηση Ιδιοτήτων
+Μπορείς να προσθέσεις νέες ιδιότητες ή να τροποποιήσεις υπάρχουσες:
+
+car.color = 'red';  // Προσθήκη νέας ιδιότητας
+car.year = 2021;    // Τροποποίηση υπάρχουσας ιδιότητας
+Μέθοδοι
+Τα αντικείμενα μπορούν να περιέχουν και συναρτήσεις ως ιδιότητες, που ονομάζονται μέθοδοι:
+
+car.start();  // Εκτύπωση: 'Car started'
