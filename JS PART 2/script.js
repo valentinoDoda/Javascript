@@ -65,3 +65,30 @@ console.log(`${valentin.firstName} has ${valentin.friends.length} friends , and 
 // Jonas is 46-years old and he has driver's license 
 
 console.log(valentin.showLicense());
+
+
+
+
+
+// Coding Exercise 7: CHALLENGE #3
+
+const mark = {
+    fullName : "Mark Miller",
+    mass : 78 ,
+    height : 1.69 ,
+    calcBmi : function(){
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi; 
+    }
+}
+const john = {
+    fullName : "John Smith",
+    mass : 92 ,
+    height : 1.95 ,
+    calcBmi : function () {
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi; 
+    }
+}
+
+console.log(`${john.calcBmi() > mark.calcBmi() ? `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`: `${mark.fullName}'s (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})!` }`)
