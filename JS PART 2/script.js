@@ -49,6 +49,19 @@ const valentin = {
     lastName : 'Doda',
     age : 21 ,
     friends : ['emil', 'katyr', 'nikos'],
-    job : 'Programmer'
+    job : 'Programmer',
+    driverLicense : true,
+    showLicense : function (){
+        console.log(this.firstName);
+        return `${this.firstName} is ${this.age}-years old and ${this.driverLicense ? 'he has' : 'he has not'} driver's license`;
+
+    }
 };
 console.log(`${valentin.firstName} has ${valentin.friends.length} friends , and his favourite is called ${valentin.friends[0]}`);
+
+
+
+// CHALLENGE WHILE WATHCING OBJECTS METHODS
+// Jonas is 46-years old and he has driver's license 
+
+console.log(valentin.showLicense());
