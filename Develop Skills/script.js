@@ -159,3 +159,32 @@ const printForecast = function (arr) {
 printForecast(data1);
 */
 
+// PROBLEM 1:
+// We work for a company building a smart home thermometer.
+//Our most recent task is this: "Given an array of temperatures of one day, calculate the temperature amplitude.
+//Keep in mind that sometimes there might be a sensor error."
+
+const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
+
+// 1) Understanding the problem
+// - What is temp amplitude? Answer: difference between highest and lowest temp
+// - How to compute max and min temperatures?
+// - What's a sensor error? And what do do?
+
+/*
+Τυπος ευρος θερμακρασιας: Temperature Amplitude=Max Temperature−Min Temperature
+*/
+function smartHomeTemp(temps){
+  const normalTemps = [];
+  for(let i= 0; i < temps.length; i++){
+    if(typeof(temps[i]) !== 'number'){
+      console.log(`Υπαρχει ενα προβλημα στην ${i} μετρηση οπου δεν καταμετρηθηκε στον υπολογισμου του ευρους θερμακρασιας`);
+      continue}; 
+    normalTemps.push(temps[i]);
+  }
+  let minTemp = Math.min(...normalTemps);
+  let maxTemp = Math.max(...normalTemps);
+  return maxTemp - minTemp;
+}
+console.log(smartHomeTemp(temperatures));
+
