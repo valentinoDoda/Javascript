@@ -165,6 +165,8 @@ printForecast(data1);
 //Keep in mind that sometimes there might be a sensor error."
 
 const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
+const temperatures2 = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
+
 
 // 1) Understanding the problem
 // - What is temp amplitude? Answer: difference between highest and lowest temp
@@ -174,8 +176,9 @@ const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 /*
 Τυπος ευρος θερμακρασιας: Temperature Amplitude=Max Temperature−Min Temperature
 */
-function smartHomeTemp(temps){
+function smartHomeTemp(temps, temps2){
   const normalTemps = [];
+  temps.push(...temps2);
   for(let i= 0; i < temps.length; i++){
     if(typeof(temps[i]) !== 'number'){
       console.log(`Υπαρχει ενα προβλημα στην ${i} μετρηση οπου δεν καταμετρηθηκε στον υπολογισμου του ευρους θερμακρασιας`);
@@ -186,5 +189,14 @@ function smartHomeTemp(temps){
   let maxTemp = Math.max(...normalTemps);
   return maxTemp - minTemp;
 }
-console.log(smartHomeTemp(temperatures));
+console.log(smartHomeTemp(temperatures, temperatures2));
+
+// PROBLEM 2:
+// Function should now receive 2 arrays of temps
+
+// 1) Understanding the problem
+// - With 2 arrays, should we implement functionality twice? NO! Just merge two arrays
+
+// 2) Breaking up into sub-problems
+// - Merge 2 arrays
 
