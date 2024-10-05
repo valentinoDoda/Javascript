@@ -1,7 +1,7 @@
 02 Fundamentals Part 1 (Completed)
 03 Fundamentals Part 2 (Completed)
 05 Develop Skills (Completed)
-07 Dom Manipulation
+07 Dom Manipulation (Completed)
 08 How Js Works
 09 Modern Operators (ES6 +)
 10 Functions
