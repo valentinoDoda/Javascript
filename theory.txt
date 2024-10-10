@@ -23,3 +23,62 @@ Executed content:
 Ο κώδικας που εκτελείται όταν ορίζεται μια συνάρτηση, μια μεταβλητή ή ένα class δεν περιλαμβάνεται απαραίτητα στο executed content μέχρι να κληθεί ή χρησιμοποιηθεί.
 Όμως οτιδήποτε καλείται ή ενεργοποιείται κατά την εκτέλεση (π.χ. κλήση συνάρτησης, εκφράσεις, loops, conditions) θεωρείται executed content.
 Με λίγα λόγια, executed content είναι το κομμάτι του κώδικα που όντως "τρέχει" σε πραγματικό χρόνο και παράγει αποτελέσματα.
+
+
+Στη JavaScript, το scope (πεδίο) καθορίζει από πού μπορείς να έχεις πρόσβαση σε μεταβλητές, συναρτήσεις και αντικείμενα στον κώδικά σου. Όταν αναφερόμαστε στο "executed content" (εκτελεσμένο περιεχόμενο), αναφερόμαστε σε κώδικα που έχει εκτελεστεί σε κάποιο συγκεκριμένο scope. Ας δούμε τα βασικά είδη scope στη JavaScript και πώς αυτά επηρεάζουν τον κώδικα όταν εκτελείται.
+
+1. Global Scope (Καθολικό Πεδίο)
+Όταν μια μεταβλητή ορίζεται εκτός οποιασδήποτε συνάρτησης ή μπλοκ, βρίσκεται στο global scope.
+Όλες οι μεταβλητές που ανήκουν στο global scope είναι προσβάσιμες οπουδήποτε στον κώδικα, αφού έχουν "εκτελεστεί".
+javascript
+Copy code
+let globalVariable = "I am global";
+
+function test() {
+  console.log(globalVariable); // Θα εμφανίσει "I am global"
+}
+
+test();
+console.log(globalVariable); // Θα εμφανίσει "I am global"
+2. Function Scope (Πεδίο Συνάρτησης)
+Κάθε φορά που δημιουργούμε μια συνάρτηση, δημιουργείται ένα νέο scope, το function scope.
+Οι μεταβλητές που δηλώνονται μέσα σε μια συνάρτηση δεν είναι προσβάσιμες εκτός αυτής της συνάρτησης.
+javascript
+Copy code
+function myFunction() {
+  let localVariable = "I am local";
+  console.log(localVariable); // Θα εμφανίσει "I am local"
+}
+
+myFunction();
+console.log(localVariable); // Σφάλμα: localVariable is not defined
+3. Block Scope (Πεδίο Μπλοκ)
+Το block scope αφορά τις μεταβλητές που δηλώνονται μέσα σε μπλοκ κώδικα, δηλαδή μέσα σε αγκύλες {}
+ (π.χ., μέσα σε if, for, while, κ.λπ.) όταν χρησιμοποιούμε let ή const.
+javascript
+Copy code
+if (true) {
+  let blockVariable = "I am block scoped";
+  console.log(blockVariable); // Θα εμφανίσει "I am block scoped"
+}
+
+console.log(blockVariable); // Σφάλμα: blockVariable is not defined
+4. Lexical Scope (Λεξικό Πεδίο)
+Το lexical scope καθορίζει ότι οι εσωτερικές συναρτήσεις έχουν πρόσβαση στις μεταβλητές των εξωτερικών συναρτήσεων (αλλά όχι το αντίθετο).
+Αυτό σημαίνει ότι όταν ο κώδικας εκτελείται, η συνάρτηση "βλέπει" τις μεταβλητές που ορίζονται στον περιβάλλοντα χώρο της.
+javascript
+Copy code
+function outerFunction() {
+  let outerVariable = "I am from outer";
+
+  function innerFunction() {
+    console.log(outerVariable); // Θα εμφανίσει "I am from outer"
+  }
+
+  innerFunction();
+}
+
+outerFunction();
+Στη JavaScript, όταν το executed content τρέχει,
+ το scope καθορίζει ποιες μεταβλητές και συναρτήσεις είναι ορατές και προσβάσιμες. Έτσι, οι μεταβλητές που έχουν δηλωθεί σε πιο εξωτερικά 
+ scopes είναι προσβάσιμες σε εσωτερικά scopes, αλλά όχι το αντίθετο.
