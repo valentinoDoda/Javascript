@@ -48,6 +48,20 @@ const { fri } = openingHours;
 ({ open: a, close: b } = fri); // Nested Objects
 console.log(fri, a, b);
 
+const oldRestoraunt = ({}, Object.assign(restaurant));
+oldRestoraunt.location = "Greece";
+console.log(oldRestoraunt);
+console.log(restaurant);
+//Join 2 arrays
+const menu2 = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(...menu2); 
+
+
+// Objects
+const newRestoraunt = {foundedIn: 2003 , ...restaurant, founder : "Valentin" };
+console.log(newRestoraunt);
+newRestoraunt.location = "Albania";
+console.log(restaurant.location);
 /*
 const ages = [19,29,23];
 const [a,b,c] = ages; //Καταστροφή Πίνακα εισχωρόντας το σε νεες μεταβλητές αντίστοιχα (το αρχικό ages δεν επιρεάζεται)
@@ -391,3 +405,20 @@ book1.printBookInfo({
   author: "Robert Sedgewick",
   year: "2011",
 });
+
+
+/* 1.Each book object has the author property, which stores an array 
+of strings (author names) if there are multiple authors, or a single string (author name) if there is just one author.
+
+Declare an array called bookAuthors, and fill it 
+with authors of the first two books from the books array. The bookAuthors array should have just one level (no nested arrays).*/
+const bookAuthors = [...book1.author, ...book2.author];
+console.log(bookAuthors);
+
+/*2.Write a function called spellWord that accepts a single string as an argument.
+ This function should log to the console each letter of the argument separated by a space.*/
+
+ function spellWord(str){
+    console.log(...str);
+ }
+ spellWord("Barella Nutella Cucurella");
