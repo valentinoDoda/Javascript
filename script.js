@@ -593,8 +593,8 @@ function printGoals(...players) {
   );
 }
 printGoals(...game.scored); // 6
-team1 < team2 && console.log("Team 1 will win" );
-team2 < team1 && console.log("Team 2 will win" );
+team1 < team2 && console.log("Team 1 will win");
+team2 < team1 && console.log("Team 2 will win");
 
 /*
 Let's continue with our football betting app! Keep using the 'game' variable from
@@ -621,41 +621,39 @@ Lewandowski: 2
 }
 */
 
-for(let [index, player] of game.scored.entries()){
-   console.log(`Goal ${index + 1}: ${player}`); 
-}//1
+for (let [index, player] of game.scored.entries()) {
+  console.log(`Goal ${index + 1}: ${player}`);
+} //1
 
 let sum = 0;
-for(let odd of Object.values(game.odds)){
- sum+= odd;
+for (let odd of Object.values(game.odds)) {
+  sum += odd;
 }
-console.log(sum/Object.values(game.odds).length); //2
-for(let [team , odd] of Object.entries(game.odds)){
-  console.log(`Odd of ${team == 'x' ? 'draw' : 'victory ' + game[team]} : ${odd}`);
-}// 3
+console.log(sum / Object.values(game.odds).length); //2
+for (let [team, odd] of Object.entries(game.odds)) {
+  console.log(
+    `Odd of ${team == "x" ? "draw" : "victory " + game[team]} : ${odd}`
+  );
+} // 3
 
-const scorers = {
-
-};
-for(let player of game.scored){
+const scorers = {};
+for (let player of game.scored) {
   scorers[player] = 0;
 }
-for(let scorer of game.scored){
+for (let scorer of game.scored) {
   scorers[scorer] += 1;
 }
 console.log(scorers); // 4
-
 
 /*
 1.
 Use the for-of loop to loop over the books array and sum the pages of all books. 
 Use the pageSum variable below, and  the pages property of the book objects.*/
 let pageSum = 0;
-for(let {pages : item} of books){
+for (let { pages: item } of books) {
   pageSum += item;
 }
 console.log(`The sum pages of the books are ${pageSum}`);
-
 
 /*2.
 Below is the allAuthors variable which stores an empty array. 
@@ -665,15 +663,15 @@ Remember that each book object has the author property, which can be a string (i
 or an array (if there are multiple authors). You may need to use the typeof operator. 
 You can also use multiple loops if needed. The allAuthors array should have just one level (no nested arrays)*/
 const allAuthors = [];
-for(let {author : authors} of books){
-  if(typeof(authors) === "string"){
-    
+for (let { author: authors } of books) {
+  if (typeof authors === "string") {
     allAuthors.push(authors);
+  } else {
+    allAuthors.push(...authors);
+    console.log(typeof authors);
   }
-  else{allAuthors.push(...authors);console.log(typeof(authors));}
 }
 console.log(...allAuthors);
-
 
 /* 
 3.
@@ -681,10 +679,9 @@ Use the for-of loop together with Array's entries()
 method to log each author from allAuthors to the console together with its index. Make the index start from 1, instead of 0.
 
 */
-for(let [authorIndex, authorNames] of allAuthors.entries()){
+for (let [authorIndex, authorNames] of allAuthors.entries()) {
   console.log(`${authorIndex} : ${authorNames}`);
 }
-
 
 /*
 1.
@@ -695,16 +692,16 @@ Below is the bookData array that contains other arrays. Each inner array consist
 Using computed properties, fill the newBook object with the properties and values from the bookData array. The first one is done already
 */
 const bookData = [
-  ['title', 'Computer Networking: A Top-Down Approach'],
-  ['author', ['James F. Kurose', 'Keith W. Ross']],
-  ['publisher', 'Addison Wesley'],
+  ["title", "Computer Networking: A Top-Down Approach"],
+  ["author", ["James F. Kurose", "Keith W. Ross"]],
+  ["publisher", "Addison Wesley"],
 ];
 
 // Do the rest
 const newBook = {
   [bookData[0][0]]: bookData[0][1],
-  [bookData[1][0]] : bookData [1][1],
-  [bookData[2][0]] : bookData [2][1],
+  [bookData[1][0]]: bookData[1][1],
+  [bookData[2][0]]: bookData[2][1],
   // ...
 };
 /*
@@ -714,21 +711,19 @@ Below is the pages variable. Add it as a property of the newBook2 object. Use th
 const pages = 880;
 
 const newBook2 = {
-  title: 'The C Programming Language',
-  author: ['Brian W. Kernighan', 'Dennis M. Ritchie'],
-  pages
-}
-
+  title: "The C Programming Language",
+  author: ["Brian W. Kernighan", "Dennis M. Ritchie"],
+  pages,
+};
 
 /* 1. Write a function called getFirstKeyword that takes the book object as an argument.
  This function should return the first keyword from the book's keywords property (array) or undefined (if the keywords property doesn't exist). 
 It shouldn't throw an error. Use optional chaining for that. */
-function getFirstKeyword (book){
-  return book.keywords?.[0]; 
+function getFirstKeyword(book) {
+  return book.keywords?.[0];
 }
 console.log(getFirstKeyword(books[0]));
 console.log(getFirstKeyword(newBook2));
-
 
 /*1. 
 Below is the entries variable that stores an empty array. 
@@ -738,8 +733,8 @@ property (array) of the first book object from the books array. For each key, pu
 In the end, the entries array should be filled with arrays containing keys: */
 const entries = [];
 
-for(let keys of Object.keys(books[0].thirdParty.goodreads)){
-entries.push([keys]);
+for (let keys of Object.keys(books[0].thirdParty.goodreads)) {
+  entries.push([keys]);
 }
 console.log(entries);
 
@@ -753,7 +748,9 @@ of the first book from the books array.
 
 Push each value to the appropriate inner array in the entries array (use index from entries()). */
 
-for (const [index, value] of Object.values(books[0].thirdParty.goodreads).entries()) {
+for (const [index, value] of Object.values(
+  books[0].thirdParty.goodreads
+).entries()) {
   entries[index].push(value);
 }
 
@@ -765,4 +762,4 @@ const entries2 = Object.entries(books[0].thirdParty.goodreads);
 /*
 4.
 Log the entries and entries2 variables to the console, and compare them. They should look the same.*/
-console.log(entries,entries2);
+console.log(entries, entries2);
