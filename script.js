@@ -764,8 +764,6 @@ const entries2 = Object.entries(books[0].thirdParty.goodreads);
 Log the entries and entries2 variables to the console, and compare them. They should look the same.*/
 console.log(entries, entries2);
 
-
-
 /*
 1. 
 Below is the allKeywords variable, which stores an empty array. 
@@ -777,10 +775,9 @@ Use whatever loop and methods you want.
   In the end, the allKeywords array should look more or less like this:
    ['computer science', 'programming', 'algorithms', 'data structures', ...].*/
 const allKeywords = [];
-for(let {keywords} of books){
+for (let { keywords } of books) {
   allKeywords.push(...keywords);
 }
-
 
 /*
 2.
@@ -800,7 +797,7 @@ console.log(uniqueKeywords);
 Delete 'business' from the uniqueKeywords set.
 
 */
-uniqueKeywords.delete('business');
+uniqueKeywords.delete("business");
 
 /*
 5.
@@ -818,7 +815,10 @@ console.log(uniqueKeywords);
 Create a new book, but this time, as a Map. Assign it to the bookMap variable. Use this array as initial data:
 [['title', 'Clean Code'], ['author', 'Robert C. Martin']]
 */
-const bookMap = new Map([['title', 'Clean Code'], ['author', 'Robert C. Martin']]);
+const bookMap = new Map([
+  ["title", "Clean Code"],
+  ["author", "Robert C. Martin"],
+]);
 console.log(bookMap);
 
 /*
@@ -826,15 +826,13 @@ console.log(bookMap);
 Set a new key in bookMap called pages, and assign it with a number 464.
 
 */
-bookMap.set(
-  'pages' , 464
-)
+bookMap.set("pages", 464);
 console.log(bookMap);
 
 /*3.
 Get the title and author values from bookMap,
 and log to the console a string formatted like that: "${title} by ${author}".*/
-console.log(`${bookMap.get('title')} by ${bookMap.get('author')} `);
+console.log(`${bookMap.get("title")} by ${bookMap.get("author")} `);
 
 /*4.
 Get the size of bookMap, and log it to the console.
@@ -846,4 +844,20 @@ console.log(bookMap.size);
 5.
 Check if bookMap has the author key. and if so, log "The author of the book is known" to the console.*/
 
-console.log(!bookMap.has('author') || "The author of the book is known");
+console.log(!bookMap.has("author") || "The author of the book is known");
+
+/*
+1.
+Convert the first book object from the books array into a Map, and assign it to a firstBookMap variable.*/
+const firstBookMap = new Map(Object.entries(books[1]));
+console.log(firstBookMap);
+
+/*
+2.
+Use the for-of loop to iterate over firstBookMap, and log to the console keys that have numbers as values.
+
+*/
+
+for (const [key, value] of firstBookMap) {
+  if (typeof value === "number") console.log(key);
+}
