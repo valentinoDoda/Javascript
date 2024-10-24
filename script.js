@@ -895,34 +895,41 @@ const events = new Set([...gameEvents.values()]);
 console.log(events); //1
 
 gameEvents.delete(64); //2
-console.log(`An event happened , on avrage every ${90/gameEvents.size} minutes`); // 3
-for (let [minute , event] of gameEvents){
-  console.log(`[${minute <= 45 ? 'FIRST HALF' : 'SECOND HALF'}] ${minute}: ${event}`);
-}//4
-
+console.log(
+  `An event happened , on avrage every ${90 / gameEvents.size} minutes`
+); // 3
+for (let [minute, event] of gameEvents) {
+  console.log(
+    `[${minute <= 45 ? "FIRST HALF" : "SECOND HALF"}] ${minute}: ${event}`
+  );
+} //4
 
 /*
 1.
 Take the ISBN property of the first book from the books array, and log to the 
 console characters at index 6, 4, 9 and 8. Use bracket notation to access individual characters.*/
-console.log(books[0].ISBN[6], books[0].ISBN[4], books[0].ISBN[9], books[0].ISBN[8]);
-
+console.log(
+  books[0].ISBN[6],
+  books[0].ISBN[4],
+  books[0].ISBN[9],
+  books[0].ISBN[8]
+);
 
 /*
 2.
 Below is the quote variable that stores a string. Find the index of the word 'chess', and log it to the console.
 
 */
-const quote = 'A computer once beat me at chess, but it was no match for me at kick boxing';
-console.log(quote.indexOf('chess'));
-
+const quote =
+  "A computer once beat me at chess, but it was no match for me at kick boxing";
+console.log(quote.indexOf("chess"));
 
 /*
 3.
 Extract the word "boxing" from the same quote string, and log it to the console.
 
 */
-console.log(quote.slice(quote.indexOf('boxing')));
+console.log(quote.slice(quote.indexOf("boxing")));
 
 /*4.
 Some authors are noted as "(Contributor)", for example "Julie Sussman (Contributor)". 
@@ -930,8 +937,72 @@ Create a function called isContributor that takes an author's name as an argumen
 (if he's a contributor) of false (if he's not a contributor). The string "(Contributor)" 
 is always the last part of the author's name string.
 */
-function isContributor(author){
-  return author.indexOf("(Contributor)") != -1 ? true : false; 
+function isContributor(author) {
+  return author.indexOf("(Contributor)") != -1 ? true : false;
 }
-console.log(isContributor('Julie Sussman (Contributor)'));
+console.log(isContributor("Julie Sussman (Contributor)"));
 
+/*1
+Write a function called normalizeAuthorName that takes
+ an author's name (string) as an argument, and returns 
+ the same string, but the first name and last name are capitalized
+, and the "(Contributor)" part is removed (if exists).
+You can be sure that the author's name always consists of 
+two words separated by a space, and possibly ends with "(Contributor)". The string may also contain trailing spaces.*/
+function normalizeAuthorName(author) {
+  author = author.trim();
+  const firstName = author.slice(0, author.indexOf(" ")).toLowerCase();
+  const lastName = author
+    .slice(author.indexOf(" ") + 1, author.lastIndexOf(" "))
+    .toLowerCase();
+  const newString = [firstName, lastName];
+  author =
+    firstName[0].toUpperCase() +
+    firstName.slice(1) +
+    " " +
+    lastName[0].toUpperCase() +
+    lastName.slice(1);
+  return author;
+}
+console.log(normalizeAuthorName("  JuliE sussMan (Contributor)'"));
+
+/*
+2.
+Take the title of the second book (books[1]) from the books array, and replace the word "Programs" with "Software". 
+Assign the new string to the newBookTitle variable.
+*/
+const newBookTitle = books[1].title.replace("Programs", "Software");
+
+/*
+
+3.
+Write a function called logBookTheme that takes book's title (string), and logs to the console:
+
+"This book is about computers" if the title starts with the word "computer",
+
+"This book is about algorithms and data structures" if the title includes both the "algorithms" and "structures" words,
+
+and, "This book is about some systems, but definitely not about operating systems" if the title ends with the word 
+"system" or "systems", but doesn't include the word "operating".*/
+function logBookTheme(titleBook) {
+  titleBook = titleBook.toLowerCase();
+  let msg = " DSADSD";
+  if (titleBook.startsWith("computer")) {
+    msg = "This book is about computers";
+  } else if (
+    titleBook.includes("algorithms") &&
+    titleBook.includes("structures")
+  ) {
+    msg = "This book is about algorithms and data structures";
+  } else if (
+    (titleBook.endsWith("system") || titleBook.endsWith("systems")) &&
+    !titleBook.includes("operating")
+  ) {
+    msg =
+      "This book is about some systems, but definitely not about operating systems";
+  } else {
+    msg = "gkol";
+  }
+  console.log(msg);
+}
+logBookTheme(books[2].title);
