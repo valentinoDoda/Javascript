@@ -1044,7 +1044,6 @@ function getKeywordsAsString(array) {
 }
 console.log(getKeywordsAsString(books));
 
-
 /*
 3.
 Below is the bookChapters array that contains inner arrays. Each inner array consists of a
@@ -1057,10 +1056,57 @@ Write a function called logBookChapters that takes an array of arrays (like book
 
 Use the padEnd method.*/
 
-const bookChapters = [['The Basics', 14], ['Sorting', 254], ['Searching', 372], ['Graphs', 526], ['Strings', 706]];
-const logBookChapters = (books) =>{
-  for( let [book , page] of books){
-    console.log(book.padEnd( 15 , "_") ,page);
+const bookChapters = [
+  ["The Basics", 14],
+  ["Sorting", 254],
+  ["Searching", 372],
+  ["Graphs", 526],
+  ["Strings", 706],
+];
+const logBookChapters = (books) => {
+  for (let [book, page] of books) {
+    console.log(book.padEnd(15, "_"), page);
   }
-}
+};
 logBookChapters(bookChapters);
+
+/*
+Write a program that receives a list of variable names written in underscore_case
+and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to
+insert the elements), and conversion will happen when the button is pressed.
+Test data (pasted to textarea, including spaces):
+underscore_case
+first_name
+Some_Variable
+calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase ✅
+firstName ✅✅
+someVariable ✅✅✅
+calculateAge ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+Hints:
+§ Remember which character defines a new line in the textarea 😉
+§ The solution only needs to work for a variable made out of 2 words, like a_b
+§ Start without worrying about the ✅. Tackle that only after you have the variable
+name conversion working 😉
+§ This challenge is difficult on purpose, so start watching the solution in case
+you're stuck. Then pause and continue!
+
+*/
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+const wholeText = [];
+document.querySelector("button").addEventListener("click", function () {
+  
+  let text = document.querySelector("textarea").value;
+  const lines = text.split("\n");
+  for (let [i, word] of lines.entries()) {
+    let [word1 , word2] = word.toLowerCase().trim().split("_");
+    const wholeWord = `${word1}${word2.replace(word2[0], word2[0].toUpperCase())}`;
+    console.log(wholeWord.padEnd(20) , '✅'.repeat(i + 1));
+  }
+  
+});
