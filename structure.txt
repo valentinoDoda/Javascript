@@ -3,7 +3,7 @@
 05 Develop Skills (Completed)
 07 Dom Manipulation (Completed)
 08 How Js Works (Completed)
-09 Modern Operators (ES6 +)
+09 Modern Operators (ES6 +)(Completed)
 10 Functions
 11 Arrays
 12 Numbers , Dates , Timers
