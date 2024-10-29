@@ -33,8 +33,6 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
-
 // Elements
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
@@ -65,17 +63,52 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 // LECTURES
 
+const displayMovements = function (movement) {
+  containerMovements.innerHTML = " ";
+  let type = ``;
+  movement.movements.forEach((value, index) => {
+    (function () {
+      type = value > 0 ? "deposit" : "withdrawal";
+    })();
+    const html = `
+    <div class="movements__row">
+            <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type.toUpperCase()}</div>
+            <div class="movements__date">3 days ago</div>
+            <div class="movements__value">${value}</div>
+          </div>
+          
+    `;
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
+
+const accounts = [account1, account2, account3, account4];
+displayMovements(account1);
+
 const currencies = new Map([
   ["USD", "United States dollar"],
   ["EUR", "Euro"],
   ["GBP", "Pound sterling"],
 ]);
 
+//forEach Map and Set
+currencies.forEach((value, key, map) => {
+  console.log(key + " :", value);
+});
+
+const currenciesUnique = new Set();
+currencies.forEach((value, key) => currenciesUnique.add(key));
+console.log(currenciesUnique);
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-movements.forEach((move, index, entireArray ) =>
-
-  console.log("Κίνηση " + (index+1) , (move > 0 ? `Κατάθεση : ${move}` : `Ανάληψη: ${Math.abs(move)}`))
+movements.forEach((move, index, entireArray) =>
+  console.log(
+    "Κίνηση " + (index + 1),
+    move > 0 ? `Κατάθεση : ${move}` : `Ανάληψη: ${Math.abs(move)}`
+  )
 );
 /////////////////////////////////////////////////
 
