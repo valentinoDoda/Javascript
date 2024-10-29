@@ -74,3 +74,28 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+//slice
+let arr = ['a', 'b','c','d','e'];
+console.log(arr.slice(2));
+console.log(arr.slice(2,4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice());
+
+
+//splice
+//Λειτουργει με τον ιδιο τροπο οπως το slice με την διαφορα οτι αυτο αντι να επιστρέπει απλα την τιμη αλλάζει και τον αρχικό πίνακα
+
+
+//reverse
+let arr2 = [].concat(arr); // Επιστρέφει και αλλάζει τον αρχικό πίνακα με αντιστροφή σειρά
+arr2.reverse()
+console.log(arr2, arr)
+//concat
+
+const letters = arr.concat(arr2); // 
+
+// join 
+console.log(letters.join("-"));
+console.log(letters);
