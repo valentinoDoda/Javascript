@@ -4,7 +4,7 @@
 07 Dom Manipulation (Completed)
 08 How Js Works (Completed)
 09 Modern Operators (ES6 +)(Completed)
-10 Functions
+10 Functions (Completed)
 11 Arrays
 12 Numbers , Dates , Timers
 13 Advanced Dom
