@@ -87,6 +87,39 @@ const displayMovements = function (movement) {
 const accounts = [account1, account2, account3, account4];
 displayMovements(account1);
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const displaySummary = (valIn, valOut, valInt) => {
+  valIn(movements), valOut(movements), valInt(movements);
+};
+displaySummary(value_In, value_Out, interestMoney);
+function value_In(movements) {
+  const totalIn = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => {
+      return acc + mov;
+    }, 0);
+  labelSumIn.textContent = totalIn;
+}
+function value_Out(movements) {
+  const totalOut = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => {
+      return acc + mov;
+    }, 0);
+  labelSumOut.textContent = Math.abs(totalOut);
+}
+function interestMoney(movements) {
+  const totalIn = movements
+    .filter((mov) => mov > 0)
+    .map((deposit) => (deposit * 1.2) / 100)
+    .filter((dep) => dep >= 1)
+    .reduce((acc, total) => {
+      return acc + total;
+    });
+  labelSumInterest.textContent = totalIn;
+}
+
 const user = "Steven Thomas Williams";
 const userNames = function (user) {
   const userName = user
@@ -118,7 +151,6 @@ const currenciesUnique = new Set();
 currencies.forEach((value, key) => currenciesUnique.add(key));
 console.log(currenciesUnique);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const deposits = function (movement) {
   const positives = movement.filter((value) => {
     return value > 0;
