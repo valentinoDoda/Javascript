@@ -243,13 +243,17 @@ Test data:
 § Data 1: [5, 2, 4, 1, 15, 8, 3]
 § Data 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀*/
-const calcAverageHumanAge = function(ages){
+const calcAverageHumanAge = function (ages) {
   console.log(`These are the ages data : ${ages}`);
-  const humanAges = ages.map(age => age<= 2? age * 2: age * 4 + 16);
+  const humanAges = ages.map((age) => (age <= 2 ? age * 2 : age * 4 + 16));
   console.log(`These are the converting human ages ${humanAges}`);
-  const over18 = humanAges.filter(age => age >= 18);
+  const over18 = humanAges.filter((age) => age >= 18);
   console.log(`These are the over 18 dog ${over18}`);
-  const average = over18.reduce((acc,age) => {return acc + age}, 0) / over18.length;
+  const average =
+    over18.reduce((acc, age) => {
+      return acc + age;
+    }, 0) / over18.length;
   console.log(`This is the average ${average}`);
-}
+};
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
