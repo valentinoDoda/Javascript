@@ -88,16 +88,18 @@ const accounts = [account1, account2, account3, account4];
 displayMovements(account1);
 
 const user = "Steven Thomas Williams";
-const userNames = function (user){
-  const userName = user.toLocaleLowerCase()
-  .split(" ")
-  .map((value) => {
-    return value[0];
-  }).join("");
-  return userName;}
+const userNames = function (user) {
+  const userName = user
+    .toLocaleLowerCase()
+    .split(" ")
+    .map((value) => {
+      return value[0];
+    })
+    .join("");
+  return userName;
+};
 
-
-accounts.forEach(value =>{
+accounts.forEach((value) => {
   value.userName = userNames(value.owner);
 });
 
@@ -117,6 +119,16 @@ currencies.forEach((value, key) => currenciesUnique.add(key));
 console.log(currenciesUnique);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const deposits = function (movement) {
+  const positives = movement.filter((value) => {
+    return value > 0;
+  });
+  return positives;
+};
+accounts.forEach((value) => {
+  value.positives = deposits(value.movements);
+});
+console.log(accounts);
 
 movements.forEach((move, index, entireArray) =>
   console.log(
