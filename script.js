@@ -59,6 +59,8 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+const accounts = [account1, account2, account3, account4];
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -84,15 +86,14 @@ const displayMovements = function (movement) {
   });
 };
 
-const accounts = [account1, account2, account3, account4];
-displayMovements(account1);
-
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displaySummary = (valIn, valOut, valInt) => {
-  valIn(movements), valOut(movements), valInt(movements);
+const displaySummary = (userLogin) => {
+  value_In(userLogin.movements),
+    value_Out(userLogin.movements),
+    interestMoney(userLogin.movements);
 };
-displaySummary(value_In, value_Out, interestMoney);
+//isplaySummary(value_In, value_Out, interestMoney);
 function value_In(movements) {
   const totalIn = movements
     .filter((mov) => mov > 0)
@@ -245,16 +246,12 @@ const eurToUsd = 1.1;
 const movementsUsd = movements.map(function (mov) {
   return mov * eurToUsd;
 });
-const balance = movements.reduce((acc, mov) => {
-  return (acc += mov);
-}, 0);
-labelBalance.textContent = balance;
+
 const biggestMov = movements.reduce(
   (acc, mov) => (acc > mov ? acc : mov),
   movements[0]
 );
 console.log(biggestMov);
-console.log(balance);
 
 /*
 Challenge #2
@@ -293,3 +290,25 @@ as an arrow function, and using chaining!
 Test data:
 § Data 1: [5, 2, 4, 1, 15, 8, 3]
 § Data 2: [16, 6, 10, 5, 6, 1, 4]*/
+let active;
+
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+  const activeUser = accounts.find(
+    (account) =>
+      account.userName == inputLoginUsername.value.trim() &&
+      account.pin == inputLoginPin.value.trim()
+  );
+  if (activeUser) {
+    labelWelcome.textContent = `Welcome ${activeUser.owner}`;
+    displaySummary(activeUser);
+    labelBalance.textContent = activeUser.movements.reduce((acc, mov) => {
+      return (acc += mov);
+    }, 0);
+    displayMovements(activeUser);
+    containerApp.style.opacity = 1;
+  } else {
+    containerApp.style.opacity = 0;
+    labelWelcome.textContent = "User dont exist";
+  }
+});
