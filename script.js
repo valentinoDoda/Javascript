@@ -182,3 +182,8 @@ const checkDogs = function (array1, array2) {
   });
 };
 checkDogs(dogsJulias, dogsKates);
+
+const eurToUsd = 1.1;
+const movementsUsd = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
