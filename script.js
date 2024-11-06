@@ -87,6 +87,20 @@ const displayMovements = function (movement) {
 const accounts = [account1, account2, account3, account4];
 displayMovements(account1);
 
+const user = "Steven Thomas Williams";
+const userNames = function (user){
+  const userName = user.toLocaleLowerCase()
+  .split(" ")
+  .map((value) => {
+    return value[0];
+  }).join("");
+  return userName;}
+
+
+accounts.forEach(value =>{
+  value.userName = userNames(value.owner);
+});
+
 const currencies = new Map([
   ["USD", "United States dollar"],
   ["EUR", "Euro"],
