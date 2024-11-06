@@ -213,3 +213,13 @@ const eurToUsd = 1.1;
 const movementsUsd = movements.map(function (mov) {
   return mov * eurToUsd;
 });
+const balance = movements.reduce((acc, mov) => {
+  return (acc += mov);
+}, 0);
+labelBalance.textContent = balance;
+const biggestMov = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+);
+console.log(biggestMov);
+console.log(balance);
