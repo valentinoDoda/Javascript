@@ -349,6 +349,16 @@ btnTransfer.addEventListener("click", function (e) {
   transferMoney();
 });
 
+btnLoan.addEventListener('click', function(e){
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  const accept = active.movements.some(mov => amount*0.1 < mov);
+  if(accept){
+    active.movements.push(amount)
+    uptateUi(active);
+  }
+
+})
 
 btnClose.addEventListener('click' , function(e){
   e.preventDefault();
