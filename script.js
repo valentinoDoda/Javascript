@@ -65,10 +65,11 @@ const accounts = [account1, account2, account3, account4];
 /////////////////////////////////////////////////
 // LECTURES
 
-const displayMovements = function (movement) {
+const displayMovements = function (movement, sort = false) {
   containerMovements.innerHTML = " ";
   let type = ``;
-  movement.movements.forEach((value, index) => {
+  const movs = sort ? movement.movements.slice().sort((a,b) => a - b) : movement.movements; 
+  movs.forEach((value, index) => {
     (function () {
       type = value > 0 ? "deposit" : "withdrawal";
     })();
@@ -388,3 +389,10 @@ const allWithDrawMoves = accounts
   .filter((dep) => dep < 0)
   .reduce((acc, value) => acc + value, 0);
 console.log(allDepMoves, allWithDrawMoves);
+
+let makeItSort = false;
+btnSort.addEventListener("click" , function(e){
+  e.preventDefault();
+  makeItSort = makeItSort ? false : true;
+  displayMovements(active, makeItSort);
+})
