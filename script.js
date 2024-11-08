@@ -78,7 +78,7 @@ const displayMovements = function (movement) {
       index + 1
     } ${type.toUpperCase()}</div>
             <div class="movements__date">3 days ago</div>
-            <div class="movements__value">${value}</div>
+            <div class="movements__value">${value}  €</div>
           </div>
           
     `;
@@ -100,7 +100,7 @@ function value_In(movements) {
     .reduce((acc, mov) => {
       return acc + mov;
     }, 0);
-  labelSumIn.textContent = totalIn;
+  labelSumIn.textContent = `${totalIn} €`;
 }
 function value_Out(movements) {
   const totalOut = movements
@@ -108,7 +108,7 @@ function value_Out(movements) {
     .reduce((acc, mov) => {
       return acc + mov;
     }, 0);
-  labelSumOut.textContent = Math.abs(totalOut);
+  labelSumOut.textContent = `${Math.abs(totalOut)} €`;
 }
 function interestMoney(movements) {
   const totalIn = movements
@@ -118,7 +118,7 @@ function interestMoney(movements) {
     .reduce((acc, total) => {
       return acc + total;
     });
-  labelSumInterest.textContent = totalIn;
+  labelSumInterest.textContent = `${totalIn} €`;
 }
 
 const user = "Steven Thomas Williams";
@@ -290,25 +290,61 @@ as an arrow function, and using chaining!
 Test data:
 § Data 1: [5, 2, 4, 1, 15, 8, 3]
 § Data 2: [16, 6, 10, 5, 6, 1, 4]*/
-let active;
 
+const balance = (user) => {
+  user.balance = user.movements.reduce((acc, mov) => {
+    return (acc += mov);
+  }, 0);
+};
+
+const uptateUi = function (active) {
+  displaySummary(active);
+  balance(active);
+  labelBalance.textContent = `${active.balance} €`;
+  displayMovements(active);
+};
+
+let active;
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
-  const activeUser = accounts.find(
+  active = accounts.find(
     (account) =>
       account.userName == inputLoginUsername.value.trim() &&
       account.pin == inputLoginPin.value.trim()
   );
-  if (activeUser) {
-    labelWelcome.textContent = `Welcome ${activeUser.owner}`;
-    displaySummary(activeUser);
-    labelBalance.textContent = activeUser.movements.reduce((acc, mov) => {
-      return (acc += mov);
-    }, 0);
-    displayMovements(activeUser);
+  if (active) {
+    labelWelcome.textContent = `Welcome ${active.owner}`;
+    uptateUi(active);
     containerApp.style.opacity = 1;
   } else {
     containerApp.style.opacity = 0;
     labelWelcome.textContent = "User dont exist";
   }
+});
+
+function transferMoney() {
+  
+  if (active) {
+    if (active.balance > Number(inputTransferAmount.value) && active.userName != inputTransferTo.value.trim()) {
+      console.log("Right Balance");
+      const accountTake = accounts.find(
+        (account) => account.userName == inputTransferTo.value.trim()
+      );
+      balance(accountTake);
+      accountTake.balance += Number(inputTransferAmount.value);
+      active.balance = Number(inputTransferAmount.value) - balance(active);
+      active.movements.push(-Number(inputTransferAmount.value));
+      accountTake.movements.push(Number(inputTransferAmount.value));
+      uptateUi(active);
+      console.log(accountTake);
+    } else {
+      console.log("not enough money");
+    }
+  }
+  inputTransferTo.value = inputTransferAmount.value = " ";
+}
+
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
+  transferMoney();
 });
