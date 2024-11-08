@@ -396,3 +396,7 @@ btnSort.addEventListener("click" , function(e){
   makeItSort = makeItSort ? false : true;
   displayMovements(active, makeItSort);
 })
+
+
+const random = Array.from({length: 100} , () => Math.floor(Math.random() * 100)+1);
+console.log(random);
