@@ -348,3 +348,14 @@ btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   transferMoney();
 });
+
+
+btnClose.addEventListener('click' , function(e){
+  e.preventDefault();
+  if(inputCloseUsername.value.trim() == active.userName && Number(inputClosePin.value) == active.pin){
+    const index = accounts.findIndex(user => user.userName == active.userName);
+    accounts.splice(index,1);
+    containerApp.style.opacity = 0;
+  }
+  else{console.log("You cant remove that");}
+})
