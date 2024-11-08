@@ -323,9 +323,11 @@ btnLogin.addEventListener("click", function (e) {
 });
 
 function transferMoney() {
-  
   if (active) {
-    if (active.balance > Number(inputTransferAmount.value) && active.userName != inputTransferTo.value.trim()) {
+    if (
+      active.balance > Number(inputTransferAmount.value) &&
+      active.userName != inputTransferTo.value.trim()
+    ) {
       console.log("Right Balance");
       const accountTake = accounts.find(
         (account) => account.userName == inputTransferTo.value.trim()
@@ -349,23 +351,40 @@ btnTransfer.addEventListener("click", function (e) {
   transferMoney();
 });
 
-btnLoan.addEventListener('click', function(e){
+btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Number(inputLoanAmount.value);
-  const accept = active.movements.some(mov => amount*0.1 < mov);
-  if(accept){
-    active.movements.push(amount)
+  const accept = active.movements.some((mov) => amount * 0.1 < mov);
+  if (accept) {
+    active.movements.push(amount);
     uptateUi(active);
   }
+});
 
-})
-
-btnClose.addEventListener('click' , function(e){
+btnClose.addEventListener("click", function (e) {
   e.preventDefault();
-  if(inputCloseUsername.value.trim() == active.userName && Number(inputClosePin.value) == active.pin){
-    const index = accounts.findIndex(user => user.userName == active.userName);
-    accounts.splice(index,1);
+  if (
+    inputCloseUsername.value.trim() == active.userName &&
+    Number(inputClosePin.value) == active.pin
+  ) {
+    const index = accounts.findIndex(
+      (user) => user.userName == active.userName
+    );
+    accounts.splice(index, 1);
     containerApp.style.opacity = 0;
+  } else {
+    console.log("You cant remove that");
   }
-  else{console.log("You cant remove that");}
-})
+});
+
+const allDepMoves = accounts
+  .map((mov) => mov.movements)
+  .flat()
+  .filter((dep) => dep > 0)
+  .reduce((acc, value) => acc + value, 0);
+const allWithDrawMoves = accounts
+  .map((mov) => mov.movements)
+  .flat()
+  .filter((dep) => dep < 0)
+  .reduce((acc, value) => acc + value, 0);
+console.log(allDepMoves, allWithDrawMoves);
