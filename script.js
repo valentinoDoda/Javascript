@@ -504,3 +504,6 @@ function checkHowMuchEats(dog) {
   }}
 }
 console.log(checkHowMuchEats(dogs[0]));
+
+
+//Date Time
