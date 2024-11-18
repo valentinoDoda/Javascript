@@ -6,7 +6,7 @@
 09 Modern Operators (ES6 +)(Completed)
 10 Functions (Completed)
 11 Arrays (Completed)
-12 Numbers , Dates , Timers
+12 Numbers , Dates , Timers (Completed)
 13 Advanced Dom
 14 Object-Oriented JS
 15 Mapty Project
